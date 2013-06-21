@@ -1,0 +1,134 @@
+<html5>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script language="javascript">
+			// declare our vars
+			var questions = [
+				"This product is right for me.",
+				"The claims made on this package are believable.",
+				"The claims on this package are important to me. ",
+				"This is a good value.   ",
+				"This contains effective cleaning agents.",
+				"This product is safe for my family.",
+				"This product is safe for the environment."
+			],
+				contexts = {
+					front : "front",
+					back : "back"
+			},
+				currentQnum = 0,
+				currentContext;
+
+			// init uninitialized variables:
+			currentContext = contexts.front;
+
+			$(document).ready(function(){
+				// Fill in the question
+				if (window.location.hash)
+				insertQ(currentQnum);
+				// Add bottle images
+				// Wire up click events
+				$(".productimage").click(flipImage);
+			});
+
+			flipImage = function(e){
+				var ost = $("#other_side_term");
+
+				switch (currentContext) {
+					case contexts.front:
+						ost.html = contexts.back;
+						break;
+					case contexts.back:
+						ost.html = contexts.front;
+						break;
+					default:
+				}
+			}
+
+			insertQ = function(num) {
+				var statement = $("#statement");
+				statement.html(questions[num]);
+			}
+		</script>
+		<style>
+			body {
+				font-size: 18px;
+				font-family: Verdana;
+				text-align: center;
+			}
+			em {
+				font-style: italic;
+				text-decoration: underline;
+			}
+			#test-body {
+				width: 960px;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+
+			#instructions {
+				width: 100%
+			}	
+
+			#question {
+				font-style: italic;
+				font-size: 22px;
+			}
+
+			#statement {
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			#options {
+				width: 100%;
+			}
+
+			.btn {
+				background: #4F81BD;
+				border: 1px solid #385D8A;
+				color: #FFFFFF;
+				font-size: 30px;
+			}
+
+			.spacer {
+				width: 200px;
+			}
+
+			#other-side-term {
+				font-style: italic;
+				font-weight: bold;
+				text-decoration: underline;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="test-body">
+			<div id="instructions">
+				<div id="question">
+					Which package <em>best fits</em> the statement below?
+				</div>
+				<div id="statement"></div>
+			</div>
+			<div id="options">
+				<div id="product1" class="option">
+					<div class="option-button-container">
+						<div id="option_button1" class="btn"><div class="button-text">Best Fit</div></div>
+					</div>
+					<div id="product1" class="product"><img id="affresh" src="" alt="" class="prouctimage"/></div>
+				</div>
+				<div id="instructions" class="spacer">
+					Click the package to show the <span id="other-side-term">fronts</span>.
+				</div>
+				<div id="product2" class="option">
+					<div class="option-button-container">
+						<div id="option_button2" class="btn"><div class="button-text">Best Fit</div></div>
+					</div>
+					<div id="product2" class="product"><img id="weiman" src="" alt="" class="prouctimage" onClick="flipImage('affresh')"/></div>
+				</div>
+			</div>
+		</div>
+				
+	</body>
+</html5>
