@@ -2,8 +2,8 @@
 	<head>
         <!-- SCRIPTS: Libraries -->
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="./scripts/underscore-min.js"></script>
-        <script language="javascript" src="./scripts/backbone-min.js"></script>
+        <script type="text/javascript" src="./libs/underscore-min.js"></script>
+        <script language="javascript" src="./libs/backbone-min.js"></script>
         <!-- SCRIPTS: Backbone.js Objects -->
         <script language="javascript" src="./scripts/Question.js"></script>
         <script language="javascript" src="./scripts/ProductImage.js"></script>
@@ -16,28 +16,34 @@
 	</head>
 	<body>
 		<div id="test-body">
+        
 			<div id="instructions">
 				<div id="question">
 					Which package <em>best fits</em> the statement below?
 				</div>
 				<div id="statement"></div>
 			</div>
+            
 			<div id="options">
+            
 				<div id="product1" class="option">
 					<div class="option-button-container">
 						<div id="option_button1" class="btn"><div class="button-text">Best Fit</div></div>
 					</div>
 					<div id="product1_image_container" class="product"><img id="affresh" src="" alt="" class="prouctimage"/></div>
 				</div>
+                
     			<div id="product2" class="option">
 					<div class="option-button-container">
 						<div id="option_button2" class="btn"><div class="button-text">Best Fit</div></div>
 					</div>
 					<div id="product2_image_container" class="product"><img id="weiman" src="" alt="" class="prouctimage" onClick="flipImage('affresh')"/></div>
 				</div>
+                
 				<div id="instructions" class="spacer">
 					Click the package to show the <span id="other-side-term">fronts</span>.
 				</div>
+                
 			</div>
 		</div>
 				

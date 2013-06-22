@@ -4,8 +4,7 @@
 /* New Init Goes Here */
 
 $(document).ready(function(){
-    qv = new QuestionTextView();
-    qv.render();
+    var route = new Router();
 });
 
 /*
