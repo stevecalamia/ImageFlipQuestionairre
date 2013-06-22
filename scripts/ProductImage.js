@@ -21,7 +21,7 @@ var ProductPair = Backbone.Collection.extend({
     model: ProductImage
 });
 
-var ProductImageView = Backbone.View.extend({
+var ProductImageClickFlipView = Backbone.View.extend({
     initialize: function(){
         
     }

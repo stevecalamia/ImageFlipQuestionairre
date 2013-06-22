@@ -4,7 +4,7 @@
 /* New Init Goes Here */
 
 $(document).ready(function(){
-    var route = new Router();
+    route = new Router();
     console.log(route);
     Backbone.history.start({
         root: "/metagrapher/productdisplaypages/workspace/"
