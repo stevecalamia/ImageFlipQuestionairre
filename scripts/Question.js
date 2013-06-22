@@ -23,22 +23,34 @@ var QuestionTextView = Backbone.View.extend({
     events: {
         'click .btn':'nextQuestion'
     },
+    currentQnum: 0,
     initialize: function() {
-        _.bindAll(this, 'render', 'nextQuestion');
+        _.bindAll(this, 'render', 'nextQuestion', "setQuestionNumber", "updateModel");
         
         this.collection = new Questions(question_list);
-        this.model = this.collection.at(0);
-        this.currentQnum = 0;
+        this.model = this.collection.at(this.currentQnum);
     },
     render: function(){
         $(this.el).html(this.model.get("text"));
     },
+    setQuestionNumber: function(qn){
+        this.currentQnum = qn;
+        this.updateModel();
+        return this;
+    },
+    updateModel: function(){
+        if (this.currentQnum >= this.collection.length) {
+            console.log("CLOSE BROWSER");
+            //close the browser window
+        } else {
+            this.model = this.collection.at(this.currentQnum);
+            this.render();
+        }
+        return this;
+    },
     nextQuestion: function(){
         this.currentQnum++;
-        if (this.currentQnum >= this.collection.length) {
-            //close the browser window
-        }
-        this.model = this.collection.at(this.currentQnum);
-        this.render();
+        this.updateModel();
+        return this;
     }
 });

@@ -15,12 +15,14 @@ var Router = Backbone.Router.extend({
                 Toggle for continue to second in pair, probably defined by
                     if a pair is specified or only a single product is.
         */
-        "product/:product1":"product"
+        "product/:product1":"product",
         "product/:product1/:product2":"product"
-    }
+    },
         
         questions: function(product1,product2,qnum) {
+            console.log("questions route");
             qv = new QuestionTextView();
+            qv.setQuestionNumber(qnum);
             qv.render();    
         },
         

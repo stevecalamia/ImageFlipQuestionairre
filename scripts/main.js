@@ -5,6 +5,10 @@
 
 $(document).ready(function(){
     var route = new Router();
+    console.log(route);
+    Backbone.history.start({
+        root: "/metagrapher/productdisplaypages/workspace/"
+    });
 });
 
 /*
