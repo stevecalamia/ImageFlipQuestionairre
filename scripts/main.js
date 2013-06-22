@@ -1,14 +1,20 @@
-    		// declare our vars
-			var questions = [
-				"This product is right for me.",
-				"The claims made on this package are believable.",
-				"The claims on this package are important to me. ",
-				"This is a good value.   ",
-				"This contains effective cleaning agents.",
-				"This product is safe for my family.",
-				"This product is safe for the environment."
-			],
-				contexts = {
+
+
+
+/* New Init Goes Here */
+
+$(document).ready(function(){
+    qv = new QuestionTextView();
+    qv.render();
+});
+
+/*
+
+//var q1 = new Question({text:"This product is right for me."})
+
+// declare our vars
+
+			var contexts = {
 					front : "front",
 					back : "back"
 			},
@@ -39,7 +45,7 @@
             
         /*****************************************
          * DOC READY
-         * **************************************/
+         * **************************************
     		$(document).ready(function(){
 				// Fill in the question
 				insertQ(currentQnum);
@@ -47,3 +53,5 @@
 				// Wire up click events
 				$(".productimage").click(flipImage);
 			});
+            
+            */

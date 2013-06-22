@@ -1,0 +1,40 @@
+#test-body {
+	width: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#instructions {
+	width: 100%
+}	
+
+#options {
+	width: 100%;
+}
+
+.option {
+	width: 33%;
+}
+
+#product1 {
+    float: left;
+}
+#product2 {
+    float: right;
+}
+
+.option-button-container {
+    width: 100%;
+}
+
+.btn {
+    width: 33%;
+    min-width: 150px;
+    padding: 10px 0px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.spacer {
+	width: 200px;
+}

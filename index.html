@@ -1,81 +1,18 @@
 <html5>
 	<head>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <!-- SCRIPTS: Libraries -->
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./scripts/underscore-min.js"></script>
         <script language="javascript" src="./scripts/backbone-min.js"></script>
-        <script language="javascript" src="./scripts/questions.js"></script>
-		<script language="javascript" src="./scripts/main.js"></script>
-		<style> 
-
-			body {
-				font-size: 18px;
-				font-family: Verdana;
-				text-align: center;
-			}
-			em {
-				font-style: italic;
-				text-decoration: underline;
-			}
-			#test-body {
-				width: 100%;
-				overflow: hidden;
-				margin: 0 auto;
-			}
-
-			#instructions {
-				width: 100%
-			}	
-
-			#question {
-				font-style: italic;
-				font-size: 22px;
-			}
-
-			#statement {
-				font-size: 24px;
-				font-weight: bold;
-			}
-
-            #options {
-    			width: 100%;
-			}
-            
-            .option {
-				width: 33%;
-			}
-            
-            #product1 {
-                float: left;
-            }
-            #product2 {
-                float: right;
-            }
-            
-            .option-button-container {
-                width: 100%;
-            }
-
-			.btn {
-				background: #4F81BD;
-				border: 1px solid #385D8A;
-				color: #FFFFFF;
-				font-size: 30px;
-                width: 33%;
-                min-width: 150px;
-                padding: 10px 0px;
-                margin: 0 auto;
-			}
-
-			.spacer {
-				width: 200px;
-			}
-
-			#other-side-term {
-				font-style: italic;
-				font-weight: bold;
-				text-decoration: underline;
-			}
-
-		</style>
+        <!-- SCRIPTS: Backbone.js Objects -->
+        <script language="javascript" src="./scripts/Question.js"></script>
+        <script language="javascript" src="./scripts/ProductImage.js"></script>
+        <!-- SCRIPTS: Init -->
+        <script language="javascript" src="./scripts/main.js"></script>
+        
+        <!-- STYLES -->
+        <link rel="stylesheet" type="text/css" href="./styles/struct.css">
+        <link rel="stylesheet" type="text/css" href="./styles/theme.css">
 	</head>
 	<body>
 		<div id="test-body">

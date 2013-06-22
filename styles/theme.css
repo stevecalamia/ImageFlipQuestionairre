@@ -1,0 +1,32 @@
+body {
+	font-size: 18px;
+	font-family: Verdana;
+	text-align: center;
+}
+em {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+#question {
+	font-style: italic;
+	font-size: 22px;
+}
+
+#statement {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.btn {
+	background: #4F81BD;
+	border: 1px solid #385D8A;
+	color: #FFFFFF;
+	font-size: 30px;
+}
+
+#other-side-term {
+	font-style: italic;
+	font-weight: bold;
+	text-decoration: underline;
+}
