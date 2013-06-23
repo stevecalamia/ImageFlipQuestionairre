@@ -21,6 +21,7 @@ var Router = Backbone.Router.extend({
         
     questions: function(productpair,qnum) {
         console.log("questions route");
+        $("#test-body").show();
         
         // render the question
         qv = new QuestionTextView();
@@ -36,11 +37,14 @@ var Router = Backbone.Router.extend({
         // show the images
         imgs = new ProductImageClickFlipViewController();
         imgs.setPair(productpair);
+        imgs.showFronts();
         imgs.render();
     },
     
     product: function(product1,product2) {
         console.log("product route");
+        pi = new SingleProductImageView();
+        pi.render();
     }
 
 });

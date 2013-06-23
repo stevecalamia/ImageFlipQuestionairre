@@ -28,22 +28,31 @@ var ProductPair = Backbone.Collection.extend({
 });
 
 var ProductImageClickFlipViewController = Backbone.View.extend({
+    events : {
+        "click .productImage" : "flipImages"
+        
+    },
     initialize: function(){
         console.log("init controller");
         _.bindAll(this, "setPair", "render");
-        
+        this.$el = $("#options");
+    
         this.products = new ProductPair();
         this.products.add(new ProductImage());
         this.products.add(new ProductImage());
         
         this.product1 = new ProductImageClickFlipView({ 
-            id : "product1",
+            el : $("#product1"),
             model: this.products.at(0)
             });
         this.product2 = new ProductImageClickFlipView({ 
-            id : "product2",
+            el : $("#product2"),
             model: this.products.at(1)
             });
+            
+        this.$el.find(".option .product img").click(_.bind(function(){
+            this.flipImages();
+        },this));
     },
     setPair: function(productPair){
         console.log("setting pair");
@@ -57,23 +66,69 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
             type : this.productPairs[2]
         });
     },
+    flipImages: function(){
+        this.product1.flipImage();
+        this.product2.flipImage();
+        this.setInstructionText();
+    },
+    setInstructionText: function(){
+        this.$el.find("#other-side-term").html((this.product1.model.get("state")=="front"?"backs":"fronts"));
+    },
+    showFronts: function(){
+        this.product1.model.set({state:"front"});
+        this.product2.model.set({state:"front"});
+        this.setInstructionText();
+    },
     render: function(){
         console.log("rendering from controller");
         this.product1.render();
         console.log("rendering product2");
         this.product2.render();
+        return this;
     }
 });
 
 var ProductImageClickFlipView = Backbone.View.extend({
+    events: {
+        "click .productImage":"flipImage"
+    },
     initialize: function(){
         _.bindAll(this, "render");
         this.model = new ProductImage();
+        /*this.$el.find(".product img").click(_.bind(function(){
+            console.log("trying to flip this bitch");
+            this.flipImage();
+        },this));*/
+        this.model.bind("change:state",this.render);
+    },
+    flipImage: function() {
+        console.log("flipping Image");
+        this.model.set({state: (this.model.get("state")=="front"?"back":"front")});
+        return this;
     },
     render: function(){
         console.log(this.model);
         console.log(this.model.get("company"));
-        $("#"+this.id + " .product img").attr("src",this.model.getURL());
+        this.$el.find(".product img").attr("src",this.model.getURL());
         return this;
+    }
+});
+
+var SingleProductImageView = Backbone.View.extend({
+    el: "#product-display",
+    events: {
+        
+    },
+    initialize: function() {
+        this.productView = new ProductImageClickFlipView();
+        this.model = new ProductImage();
+        this.productView = this.model;
+        this.productView.bind("change:model",this.setModel,this.productView.model);
+    },
+    setModel: function(m) {
+        this.model = m;  
+    },
+    render: function() {
+        
     }
 });
