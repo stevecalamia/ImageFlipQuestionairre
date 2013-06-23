@@ -8,7 +8,7 @@ var Router = Backbone.Router.extend({
                     Product Pair (Product 1 / Product 2)
                     Question Number
         */
-        "questions/:product1/:product2/:qnum":"questions",
+        "questions/:productpair/:qnum":"questions",
         
         /*
             Single Product Display
@@ -19,24 +19,28 @@ var Router = Backbone.Router.extend({
         "product/:product1/:product2":"product"
     },
         
-    questions: function(product1,product2,qnum) {
+    questions: function(productpair,qnum) {
         console.log("questions route");
+        
+        // render the question
         qv = new QuestionTextView();
         qv.setQuestionNumber(qnum);
         qv.render();    
-        $(".btn").click(_.bind(function(router, prod1, prod2){ 
-            console.log("inside bound funtion intending to call nextQuestion");
-            console.log(this);
-            console.log(router);
-            console.log(prod1,prod2);
+        
+        //wire up the button events
+        $(".btn").click(_.bind(function(router, prod, e){ 
             this.nextQuestion();
-            router.navigate("questions/"+prod1+"/"+prod2+"/"+this.currentQnum);
-            }
-        ,qv, this, product1, product2));
+            router.navigate("questions/"+prod+"/"+this.currentQnum);
+        },qv, this, productpair));
+        
+        // show the images
+        imgs = new ProductImageClickFlipViewController();
+        imgs.setPair(productpair);
+        imgs.render();
     },
     
     product: function(product1,product2) {
-        
+        console.log("product route");
     }
 
 });
