@@ -1,0 +1,53 @@
+<html5>
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- SCRIPTS: Libraries -->
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="./libs/underscore-min.js"></script>
+        <script language="javascript" src="./libs/backbone-min.js"></script>
+        <!-- SCRIPTS: Backbone.js Objects -->
+        <script language="javascript" src="./scripts/Question.js"></script>
+        <script language="javascript" src="./scripts/ProductImage.js"></script>
+        <script language="javascript" src="./scripts/Router.js"></script>
+        <!-- SCRIPTS: Init -->
+        <script language="javascript" src="./scripts/main.js"></script>
+        
+        <!-- STYLES -->
+        <link rel="stylesheet" type="text/css" href="./styles/struct.css">
+        <link rel="stylesheet" type="text/css" href="./styles/theme.css">
+	</head>
+	<body>
+		<div id="test-body">
+        
+			<div id="instructions">
+				<div id="question">
+					Which package <em>best fits</em> the statement below?
+				</div>
+				<div id="statement"></div>
+			</div>
+            
+			<div id="options">
+            
+				<div id="product1" class="option">
+					<div class="option-button-container">
+						<div id="option_button1" class="btn"><div class="button-text">Best Fit</div></div>
+					</div>
+					<div id="product1_image_container" class="product"><img id="affresh" src="" alt="" class="productimage"/></div>
+				</div>
+                
+    			<div id="product2" class="option">
+					<div class="option-button-container">
+						<div id="option_button2" class="btn"><div class="button-text">Best Fit</div></div>
+					</div>
+					<div id="product2_image_container" class="product"><img id="weiman" src="" alt="" class="productimage"/></div>
+				</div>
+                
+				<div class="spacer">
+					Click the package to show the <span id="other-side-term">backs</span>.
+				</div>
+                
+			</div>
+		</div>
+				
+	</body>
+</html5>
