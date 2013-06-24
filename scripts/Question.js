@@ -37,7 +37,7 @@ var QuestionTextView = Backbone.View.extend({
     },
     updateModel: function() {
         if (this.currentQnum >= this.collection.length) {
-            window.close();
+            $("#test-body").empty();
             //close the browser windo
         } else 
             this.model = this.collection.at(this.currentQnum);

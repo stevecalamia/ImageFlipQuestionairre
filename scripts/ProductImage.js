@@ -109,7 +109,7 @@ var ProductImageClickFlipView = Backbone.View.extend({
 var SingleProductImageView = Backbone.View.extend({
     el: "#product-display",
     events: {
-        
+        "click .btn":"blank"
     },
     model: new ProductImage(),
     initialize: function() {
@@ -143,7 +143,11 @@ var SingleProductImageView = Backbone.View.extend({
             this.productView.render();
             this.setInstructionText();
         }, this));
+        this.delegateEvents();
         
         return this;
+    },
+    blank: function(){
+        $("#test-body").empty();
     }
 });
