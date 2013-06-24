@@ -28,7 +28,7 @@ var ProductPair = Backbone.Collection.extend({
 
 var ProductImageClickFlipViewController = Backbone.View.extend({
     events : {
-        "click .productImage" : "flipImages"
+        "click .productimage" : "flipImages"
         
     },
     initialize: function(){
@@ -47,10 +47,6 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
             el : $("#product2"),
             model: this.products.at(1)
             });
-            
-        this.$el.find(".option .product img").click(_.bind(function(){
-            this.flipImages();
-        },this));
     },
     setPair: function(productPair){
         this.productPairs = productPairs[productPair];
@@ -85,7 +81,7 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
 
 var ProductImageClickFlipView = Backbone.View.extend({
     events: {
-        "click .productimage":"flipImage"
+        //"click .productimage":"flipImage"
     },
     initialize: function(){
         _.bindAll(this, "render");
