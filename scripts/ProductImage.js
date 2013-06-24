@@ -18,7 +18,6 @@ var ProductImage = Backbone.Model.extend({
         
     },
     getURL: function(){
-        console.log(this.imageurlbase,this.company,this.type,this.state,this.extension);
         return this.get("imageurlbase") + this.get("company") + "_" + this.get("type") + "_" + this.get("state") + "." + this.get("extension");
     }
 });
@@ -33,7 +32,6 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
         
     },
     initialize: function(){
-        console.log("init controller");
         _.bindAll(this, "setPair", "render");
         this.$el = $("#options");
     
@@ -55,7 +53,6 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
         },this));
     },
     setPair: function(productPair){
-        console.log("setting pair");
         this.productPairs = productPairs[productPair];
         this.product1.model.set({ 
             company : this.productPairs[0],
@@ -80,9 +77,7 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
         this.setInstructionText();
     },
     render: function(){
-        console.log("rendering from controller");
         this.product1.render();
-        console.log("rendering product2");
         this.product2.render();
         return this;
     }
@@ -102,13 +97,11 @@ var ProductImageClickFlipView = Backbone.View.extend({
         this.model.bind("change:state",this.render);
     },
     flipImage: function() {
-        console.log("flipping Image");
         this.model.set({state: (this.model.get("state")=="front"?"back":"front")});
         return this;
     },
     render: function(){
-        console.log(this.model);
-        console.log(this.model.get("company"));
+        console.log(this.model.getURL());
         this.$el.find(".product img").attr("src",this.model.getURL());
         return this;
     }

@@ -1,5 +1,10 @@
+html, body {
+    height: 100%;
+}
+
 #test-body {
 	width: 100%;
+    height: 100%;
 	overflow: hidden;
 	margin: 0 auto;
     display: none;
@@ -17,10 +22,12 @@
 
 #options {
 	width: 100%;
+    height: 100%;
 }
 
 .option {
 	width: 33%;
+    height: 100%;
 }
 
 #product1 {
@@ -50,6 +57,7 @@
 
 .product {
     padding: 10px;
+    height: 100%;
 }
 
 .productimage {

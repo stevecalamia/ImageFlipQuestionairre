@@ -20,31 +20,32 @@ var Router = Backbone.Router.extend({
     },
         
     questions: function(productpair,qnum) {
-        console.log("questions route");
         $("#test-body").show();
         
         // render the question
-        qv = new QuestionTextView();
-        qv.setQuestionNumber(qnum);
-        qv.render();    
+        this.qv = new QuestionTextView();
+        this.qv.setQuestionNumber(qnum);
+        this.qv.render();    
         
         //wire up the button events
         $(".btn").click(_.bind(function(router, prod, e){ 
             this.nextQuestion();
             router.navigate("questions/"+prod+"/"+this.currentQnum);
-        },qv, this, productpair));
+        },this.qv, this, productpair));
         
         // show the images
-        imgs = new ProductImageClickFlipViewController();
-        imgs.setPair(productpair);
-        imgs.showFronts();
-        imgs.render();
+        this.imgs = new ProductImageClickFlipViewController();
+        this.imgs.setPair(productpair);
+        this.imgs.showFronts();
+        this.imgs.render();
+        
+        $("#test-body").show();
     },
     
     product: function(product1,product2) {
-        console.log("product route");
-        pi = new SingleProductImageView();
-        pi.render();
+        $("#test-body").empty().show();
+        this.pi = new SingleProductImageView();
+        this.pi.render();
     }
 
 });
