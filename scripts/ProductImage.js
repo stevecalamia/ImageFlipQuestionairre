@@ -90,10 +90,6 @@ var ProductImageClickFlipView = Backbone.View.extend({
     initialize: function(){
         _.bindAll(this, "render");
         this.model = new ProductImage();
-        /*this.$el.find(".product img").click(_.bind(function(){
-            console.log("trying to flip this bitch");
-            this.flipImage();
-        },this));*/
         this.model.bind("change:state",this.render);
     },
     flipImage: function() {
@@ -101,7 +97,6 @@ var ProductImageClickFlipView = Backbone.View.extend({
         return this;
     },
     render: function(){
-        console.log(this.model.getURL());
         this.$el.find(".product img").attr("src",this.model.getURL());
         return this;
     }
