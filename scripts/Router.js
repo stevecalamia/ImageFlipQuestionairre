@@ -20,7 +20,6 @@ var Router = Backbone.Router.extend({
         
     questions: function(productpair,qnum) {
         
-        console.log("init questions");
         // render the question
         this.qv = new QuestionTextView();
         this.qv.setQuestionNumber(qnum);

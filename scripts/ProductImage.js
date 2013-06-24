@@ -98,6 +98,9 @@ var ProductImageClickFlipView = Backbone.View.extend({
     },
     render: function(){
         this.$el.find(".product img").attr("src",this.model.getURL());
+        if (this.model.get("company")=="Tide") {
+            this.$el.find(".productimage").addClass("tide");
+        }
         return this;
     }
 });
