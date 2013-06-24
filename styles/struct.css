@@ -89,3 +89,13 @@ html, body {
     height: 55%;
     width: auto;
 }
+
+.productimage.tide {
+    width: 100%;
+    height: auto;
+}
+
+#product-display .productimage.tide {
+    height: 50%;
+    width: auto;
+}
