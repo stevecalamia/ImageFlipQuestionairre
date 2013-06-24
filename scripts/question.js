@@ -1,4 +1,4 @@
-question_list = [
+var question_list = [
     { text: "This product is right for me."},
     { text: "The claims made on this package are believable."},
     { text: "The claims on this package are important to me. "},
