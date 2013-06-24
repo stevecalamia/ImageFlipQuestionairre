@@ -7,7 +7,10 @@ html, body {
     height: 100%;
 	overflow: hidden;
 	margin: 0 auto;
-    display: none;
+}
+
+#product-display {
+    height: 100%;
 }
 
 #instructions {
@@ -48,11 +51,33 @@ html, body {
     cursor: pointer;
 }
 
+#product-display .btn {
+    width: 15%;
+}
+
+
+#option_yes {
+    float: left;
+    margin-left: 30%;
+}
+
+#option_no { 
+    float: right;
+    margin-right: 30%;
+}
+
 .spacer {
     width: 34%;
     float: left;
     position: relative;
     top: 300px;
+}
+
+#product-display .spacer {
+    float: none;
+    clear: both;
+    top: 20px;
+    margin: 15px auto;
 }
 
 .product {

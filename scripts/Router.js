@@ -15,8 +15,7 @@ var Router = Backbone.Router.extend({
                 Toggle for continue to second in pair, probably defined by
                     if a pair is specified or only a single product is.
         */
-        "product/:product1":"product",
-        "product/:product1/:product2":"product"
+        "product/:company/:type":"product",
     },
         
     questions: function(productpair,qnum) {
@@ -42,10 +41,12 @@ var Router = Backbone.Router.extend({
         $("#test-body").show();
     },
     
-    product: function(product1,product2) {
+    product: function(company,type) {
         $("#test-body").empty().show();
         this.pi = new SingleProductImageView();
+        this.pi.setModel(company,type);
         this.pi.render();
+        $("#test-body").show();
     }
 
 });

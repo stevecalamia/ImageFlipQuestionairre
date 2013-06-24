@@ -2,22 +2,19 @@ var question_list = [
     { text: "This product is right for me."},
     { text: "The claims made on this package are believable."},
     { text: "The claims on this package are important to me. "},
-    { text: "This is a good value."},
+    { text: "The design of this package appeals to me."},
     { text: "This contains effective cleaning agents."},
     { text: "This product is safe for my family."},
-    { text: "This product is safe for the environment."},
+    { text: "This product is safe for the environment."}
 ];
-
 var Question = Backbone.Model.extend({
     defaults: {
         text: ""
-    }
+    }    
 });
-
 var Questions = Backbone.Collection.extend({
     model: Question
 });
-
 var QuestionTextView = Backbone.View.extend({
     el: "#statement",
     events: {
@@ -26,26 +23,26 @@ var QuestionTextView = Backbone.View.extend({
     currentQnum: 0,
     initialize: function() {
         _.bindAll(this, 'render', 'nextQuestion', "setQuestionNumber", "updateModel");
-        
+       
         this.collection = new Questions(question_list);
         this.model = this.collection.at(this.currentQnum);
     },
-    render: function(){
+    render: function() {
         $(this.el).html(this.model.get("text"));
     },
-    setQuestionNumber: function(qn){
+    setQuestionNumber: function(qn) {
         this.currentQnum = qn;
         this.updateModel();
         return this;
     },
-    updateModel: function(){
+    updateModel: function() {
         if (this.currentQnum >= this.collection.length) {
             window.close();
-            //close the browser window
-        } else {
+            //close the browser windo
+        } else 
             this.model = this.collection.at(this.currentQnum);
             this.render();
-        }
+        
         return this;
     },
     nextQuestion: function(){

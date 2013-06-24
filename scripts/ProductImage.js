@@ -85,11 +85,15 @@ var ProductImageClickFlipViewController = Backbone.View.extend({
 
 var ProductImageClickFlipView = Backbone.View.extend({
     events: {
-        "click .productImage":"flipImage"
+        "click .productimage":"flipImage"
     },
     initialize: function(){
         _.bindAll(this, "render");
         this.model = new ProductImage();
+        /*this.$el.find(".product img").click(_.bind(function(){
+            console.log("trying to flip this bitch");
+            this.flipImage();
+        },this));*/
         this.model.bind("change:state",this.render);
     },
     flipImage: function() {
@@ -107,16 +111,39 @@ var SingleProductImageView = Backbone.View.extend({
     events: {
         
     },
+    model: new ProductImage(),
     initialize: function() {
         this.productView = new ProductImageClickFlipView();
-        this.model = new ProductImage();
-        this.productView = this.model;
+        this.productView.model = this.model;
         this.productView.bind("change:model",this.setModel,this.productView.model);
     },
-    setModel: function(m) {
-        this.model = m;  
+    setModel: function(company,type) {
+        this.productView.model.set({ company: company, type: type});
+    },
+    setInstructionText: function(){
+        this.$el.find("#other-side-term").html((this.productView.model.get("state")=="front"?"back":"front"));
     },
     render: function() {
+        // add element
+        $("#test-body").append("<div id='product-display'></div>");
+        this.$el = $("#product-display");
+        // add buttons
+        this.$el.append('<div id="option_yes" class="btn"><div class="button-text">Yes</div></div>');
+        this.$el.append('<div id="option_no" class="btn"><div class="button-text">No</div></div>');
         
+        // add instructions
+        this.$el.append('<div class="spacer">Click the package to show the <span id="other-side-term">back</span>.</div>');
+        
+        // add ImageFlipView
+        this.$el.append('<div id="product_image_container" class="product"><img src="" alt="" class="productimage"/></div>');
+        this.productView.$el = this.$el;
+        this.productView.render();
+        this.$el.find(".productimage").click(_.bind(function(){
+            this.productView.flipImage();
+            this.productView.render();
+            this.setInstructionText();
+        }, this));
+        
+        return this;
     }
 });
